@@ -16,7 +16,7 @@ export default function PredatorFree(props: Props, surface: ClientSurface<State>
   const { Box, Text } = surface.elements
   const size = () => ({
     bw: Math.max(20, Math.min(30, Math.floor((surface.columns - 2) / 2))),
-    bh: Math.max(10, Math.min(16, surface.rows - 3)),
+    bh: Math.max(8, Math.min(12, surface.rows - 3)),
   })
   // the running round, or a new one when there is none or the last one ended
   const ensure = (s: State): InvadersGame => (s.game && !s.game.over ? s.game : newInvaders(size().bw, size().bh))
@@ -64,25 +64,26 @@ export default function PredatorFree(props: Props, surface: ClientSurface<State>
 
   const s = surface.state
   const g = s?.game
+  // before the first click, show the first wave waiting so the board reads as a game
+  const view = g ?? newInvaders(size().bw, size().bh)
   const { bw, bh } = g ? { bw: g.w, bh: g.h } : size()
-  const top = g ? Math.min(...g.aliens.map(a => a[1])) : 0
+  const top = Math.min(...view.aliens.map(a => a[1]))
   const frame = (g?.ticks ?? 0) % 10 < 5 ? 0 : 1
   const has = (list: Pt[] | undefined, x: number, y: number) => !!list?.some(p => p[0] === x && p[1] === y)
   const rows = grid(Text, bw, bh, (x, y) => {
-    if (!g) return ['  ']
-    if (y === g.h - 1 && x === g.ship) return ['▟▙', 'greenBright']
-    if (has(g.aliens, x, y)) {
+    if (y === view.h - 1 && x === view.ship) return ['▟▙', 'greenBright']
+    if (has(view.aliens, x, y)) {
       const pest = PESTS[(y - top) % PESTS.length]
       return [pest.frames[frame], pest.color]
     }
-    if (has(g.shots, x, y)) return [' ↑', 'yellowBright']
-    if (has(g.bombs, x, y)) return [' ,', 'red']
+    if (has(view.shots, x, y)) return [' ↑', 'yellowBright']
+    if (has(view.bombs, x, y)) return [' ,', 'red']
     // the bush floor: ponga green dots along the bottom row
-    if (y === g.h - 1) return [' .', 'green']
+    if (y === view.h - 1) return [' .', 'green']
     return ['  ']
   })
   const kiwi = (n: number) => '●'.repeat(Math.max(0, n))
-  const text = !g ? 'kia ora · click here, then ←→ move · space sets a trap · or the mouse'
+  const text = !g ? 'haere mai · click the bush to start · ←→ or the mouse move · space sets a trap'
     : g.over ? `auē! the pests got through · piro ${g.score} · ngaru ${g.wave} · r to go again`
     : !s?.playing ? `paused · piro ${g.score} · p carries on`
     : `piro ${g.score} · ngaru ${g.wave} · kiwi ${kiwi(g.lives)} · space traps · p pause`

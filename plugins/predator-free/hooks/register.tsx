@@ -86,7 +86,7 @@ export const register: Register = on => {
         <Box flexDirection="row" columnGap={1}>
           <Button key="predator-free:close" label="close" onPress={close} />
         </Box>
-        <Client key="board:predator-free" module="./boards/predator-free.tsx" width={cols} height={tall(19)} props={{ best, done: turnsDone, safe: false }} />
+        <Client key="board:predator-free" module="./boards/predator-free.tsx" width={cols} height={tall(15)} props={{ best, done: turnsDone, safe: false }} />
         {await next(e)}
       </Box>
     )
