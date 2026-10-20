@@ -4,6 +4,16 @@ Predator Free Aotearoa above the Claude Code prompt, for the minutes Claude spen
 
 Adapted from the invaders mod in [sezaakgun/cc-arcade](https://github.com/sezaakgun/cc-arcade) (MIT, Seza Akgün). Same rules, new skin.
 
+## Install
+
+In a terminal session:
+
+```
+/plugin install predator-free --marketplace DWellsBCN/kiwi-mods
+```
+
+In the desktop app: click + next to the prompt, then Plugins, Add marketplace with `DWellsBCN/kiwi-mods`, then add predator-free.
+
 ## Play
 
 1. `/kiwi` opens the board (`/kiwi stop` or the `close` button closes it).
