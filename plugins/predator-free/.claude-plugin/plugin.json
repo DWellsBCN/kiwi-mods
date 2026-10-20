@@ -1,0 +1,12 @@
+{
+  "name": "predator-free",
+  "version": "0.1.0",
+  "description": "Predator Free Aotearoa above the Claude Code prompt: a ranger holds the line against waves of possums, stoats and rats before they reach the kiwi. Plays while Claude works, pauses when the turn ends, keeps your best score; zero tokens. Adapted from the invaders mod in cc-arcade (MIT, Seza Akgün). Needs an interactive terminal with a mouse.",
+  "author": {
+    "name": "David Wells (adapted from Seza Akgün's cc-arcade)"
+  },
+  "homepage": "https://github.com/sezaakgun/cc-arcade",
+  "repository": "https://github.com/sezaakgun/cc-arcade",
+  "license": "MIT",
+  "keywords": ["arcade", "game", "terminal", "tui", "aotearoa", "function-hooks"]
+}

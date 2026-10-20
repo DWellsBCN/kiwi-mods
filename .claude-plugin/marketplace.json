@@ -1,0 +1,14 @@
+{
+  "name": "kiwi-mods",
+  "owner": {
+    "name": "David Wells"
+  },
+  "plugins": [
+    {
+      "name": "predator-free",
+      "source": "./plugins/predator-free",
+      "description": "Predator Free Aotearoa: a Space Invaders style game above the Claude Code prompt while Claude works. Type /kiwi."
+    }
+  ],
+  "description": "David Wells' Claude Code mods: Predator Free Aotearoa, a pest-trapping arcade game above the prompt."
+}
